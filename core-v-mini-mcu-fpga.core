@@ -37,6 +37,12 @@ filesets:
     - scripts/pynq-z2/xilinx_generate_clk_wizard.tcl
     file_type: tclSource
 
+  ip-fpga-bergen:
+    files:
+    - scripts/bergen/xilinx_generate_clk_wizard.tcl
+    - scripts/generate_sram.tcl
+    file_type: tclSource
+
   ip-fpga-nexys:
     files:
     - scripts/nexys/generate_sram.tcl
@@ -91,6 +97,15 @@ filesets:
     files:
     - constraints/pynq-z2/pin_assign.xdc
     - constraints/pynq-z2/constraints.xdc
+    - constraints/common/spi_slave.xdc
+    - constraints/common/jtag.xdc
+    - constraints/common/sync.xdc
+    file_type: xdc
+
+  xdc-fpga-bergen:
+    files:
+    - constraints/bergen/pin_assign.xdc
+    - constraints/bergen/constraints.xdc
     - constraints/common/spi_slave.xdc
     - constraints/common/jtag.xdc
     - constraints/common/sync.xdc
@@ -185,6 +200,8 @@ targets:
     - target_genesys2 ? (xdc-fpga-genesys2)
     - target_auboard-15p ? (ip-fpga-auboard-15p)
     - target_auboard-15p ? (xdc-fpga-auboard-15p)
+    - target_bergen ? (ip-fpga-bergen)
+    - target_bergen ? (xdc-fpga-bergen)
 
     parameters:
       - PS_ENABLE
